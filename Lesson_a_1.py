@@ -18,6 +18,13 @@ for x in country_list:
         print(country_dict.get(x))
 
 
+print('\nЗадача 2v2:')
+country_dict = {'Австралія': 'Канберра', 'Італія': 'Рим', 'Germany': 'Berlin', 'Україна': 'Київ'}
+country_list = ['Австралія', 'Італія', 'Germany', 'USA', 'ПАР']
+for x in set(country_list).intersection(set(country_dict.keys())):
+    print(country_dict[x])
+        
+        
 print('\nЗадача 3:')
 for i in range(1, 101):
     if i % 3 == 0 and i % 5 == 0:
