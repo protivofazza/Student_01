@@ -8,7 +8,7 @@ class Shop:
         self.sold_products = 0
 
     def sale_progress(self, value=0):
-        if value == 0:
+        if value == 0:  # При введенні від'ємного числа вважається, що клієнт здав товар у магазин
             try:
                 self.sold_products += int(input('Введіть кількість проданих товарів: '))
             except ValueError:
