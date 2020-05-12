@@ -2,7 +2,6 @@ class ComplexNumber:
     def __init__(self, r_part=0, i_part=0):
         self.r_part = r_part
         self.i_part = i_part
-        self.c_number = [r_part, i_part, 'i']
 
     def __str__(self):
         if self.i_part != 0:
