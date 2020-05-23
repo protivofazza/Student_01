@@ -3,8 +3,7 @@ from datetime import datetime
 import pickle
 
 accounts_list = []
-posts = [[], ]
-posts[0] = ([0, 'Title', 'Text', datetime.now().date(), 'Author'])
+posts = [[0, 'Title', 'Text', datetime.now().date(), 'Author'], ]
 
 
 class User:
