@@ -98,7 +98,7 @@ def new_product():
         params: dict = request.form.to_dict()
         print("dict? = ", params, type(params))
 
-        # validation
+        # проверка вводимых данных
         if not ('name' and 'model' and 'specification' and 'id_of_category' and 'num_in_store'
                 and 'num_in_stock' and 'price') in params:
             return "Ошибка. Надо вводить все данные!"
@@ -109,7 +109,7 @@ def new_product():
             params['price'] = int(params['price'])
         except ValueError:
             return "Ошибка. В четырех последних полях должны быть целочисленные значения"
-        # inserting
+        # отправка данных в базу после валидации
         params_list = [param for param in params.values()]
         print("params_list =", params_list)
         update_query(params_list, """INSERT INTO products 
