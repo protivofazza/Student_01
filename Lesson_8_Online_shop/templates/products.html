@@ -1,0 +1,17 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+            {{ category_name.0.0 }}
+    </title>
+</head>
+<body>
+        <h3> Доступные товары в категории '{{ category_name.0.0 }}': </h3>
+    {% for product in products %}
+        <h2><a href="/product/{{ product.0 }}">{{ product.1 }} {{ product.2 }}</a></h2>
+    {% endfor %}
+</body>
+</html>

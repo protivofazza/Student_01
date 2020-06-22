@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление/обновление количества товара</title>
+</head>
+<body>
+    <h3>Категории в базе:</h3>
+    {% for id, category in categories %}
+        <h4>{{id}} - {{category}}</h4>
+    {% endfor %}
+    <br>
+    <h3>Для добавления нового товара заполните <br>соответствующие поля:</h3>
+    <form action="add_product" method="post">
+        <input type="text" name="name" placeholder="Производитель"><br>
+        <input type="text" name="model" placeholder="Модель"><br>
+        <input type="text" name="specification" placeholder="Описание"><br>
+        <input type="number" name="id_of_category" placeholder="Id категории"><br>
+        <input type="number" name="num_in_store" placeholder="В наличии в магазине"><br>
+        <input type="number" name="num_in_stock" placeholder="В наличии на складе"><br>
+        <input type="number" name="price" placeholder="Цена (вносить в $)">
+        <br>
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>
