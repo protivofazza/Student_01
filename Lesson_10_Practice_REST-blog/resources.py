@@ -39,7 +39,9 @@ class TagResource(Resource):
 
         return res
 
-    def put(self, tag_id):
+    def put(self, tag_id=None):
+        if not tag_id:
+            return "Відсутній id в url"
         try:
             json_data = json.dumps(request.json)
             try:
@@ -55,7 +57,9 @@ class TagResource(Resource):
             data = "Введений ID у невірному форматі або неіснуючий: " + str(error)
             return data
 
-    def delete(self, tag_id):
+    def delete(self, tag_id=None):
+        if not tag_id:
+            return "Відсутній id в url"
         try:
             tag_to_delete = Tag.objects.get(id=tag_id)
             tag_to_delete = TagSchema().dump(tag_to_delete)
@@ -106,7 +110,9 @@ class AuthorResource(Resource):
             res = error.messages
         return res
 
-    def put(self, author_id):
+    def put(self, author_id=None):
+        if not author_id:
+            return "Відсутній id в url"
         try:
             json_data = json.dumps(request.json)
             try:
@@ -125,7 +131,9 @@ class AuthorResource(Resource):
             data = "Введений ID у невірному форматі: " + str(error)
             return data
 
-    def delete(self, author_id):
+    def delete(self, author_id=None):
+        if not author_id:
+            return "Відсутній id в url"
         try:
             author_to_delete = Author.objects.get(id=author_id)
             author_to_delete = AuthorSchema().dump(author_to_delete)
@@ -180,7 +188,9 @@ class PostResource(Resource):
             res = error.messages
         return res
 
-        def put(self, post_id):
+    def put(self, post_id=None):
+        if not post_id:
+            return "Відсутній id в url"
         json_data = json.dumps(request.json)
         try:
             try:
@@ -208,7 +218,9 @@ class PostResource(Resource):
             data = "Введений ID у невірному форматі або неіснуючий: " + str(error)
             return data
 
-    def delete(self, post_id):
+    def delete(self, post_id=None):
+        if not post_id:
+            return "Відсутній id в url"
         try:
             post_to_delete = Post.objects.get(id=post_id)
             post_to_delete = PostSchema().dump(post_to_delete)
