@@ -18,6 +18,6 @@ class PostSchema(Schema):
     title = fields.String(required=True, validate=validate.Length(min=2, max=256))
     body = fields.String(required=True, validate=validate.Length(min=2, max=4096))
     publication_date = fields.DateTime()
-    author = fields.String()
-    tag = fields.List(fields.String())
+    author = fields.String(required=True)
+    tag = fields.List(fields.String(), required=True)
     number_of_views = fields.Int(validate=validate.Range(min=0))
