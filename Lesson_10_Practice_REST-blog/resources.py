@@ -28,7 +28,7 @@ class TagResource(Resource):
             tags = Tag.objects
             return TagSchema().dump(tags, many=True)
 
-    def post(self):
+    def post(self, *args):
         json_data = json.dumps(request.json)
         try:
             res = TagSchema().loads(json_data)
@@ -96,7 +96,7 @@ class AuthorResource(Resource):
             authors = Author.objects
             return AuthorSchema().dump(authors, many=True)
 
-    def post(self):
+    def post(self, *args):
         json_data = json.dumps(request.json)
         try:
             res = AuthorSchema().loads(json_data)
@@ -166,7 +166,7 @@ class PostResource(Resource):
                 data = "Один з отриманих записів має посилання на інший неіснуючий: " + str(error)
                 return data
 
-    def post(self):
+    def post(self, *args):
         json_data = json.dumps(request.json)
         try:
             result = PostSchema().loads(json_data)
