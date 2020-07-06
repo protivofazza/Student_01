@@ -180,14 +180,27 @@ class PostResource(Resource):
             res = error.messages
         return res
 
-    def put(self, post_id):
+        def put(self, post_id):
         json_data = json.dumps(request.json)
         try:
             try:
                 post_data = PostSchema().loads(json_data)
                 post_data = json.loads(PostSchema().dumps(post_data))
-                tag = Post(id=post_id)
-                tag.update(id=post_id, **post_data)
+                post = Post(id=post_id)
+
+                reference_tags_list = post_data['tag']
+                tag_list_updated = []
+                for tag_str in reference_tags_list:
+                    reference_tag = Tag.objects.filter(id=tag_str)
+                    tag_list_updated.append(reference_tag[0].id)
+                    
+                reference_author = Author.objects.filter(id=post_data['author'])
+
+                post.update(id=post_id,
+                            body=post_data['body'],
+                            title=post_data['title'],
+                            author=reference_author[0].id,
+                            tag=tag_list_updated)
             except ValidationError as error:
                 post_data = error.messages
             return post_data
